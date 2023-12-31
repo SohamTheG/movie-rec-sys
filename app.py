@@ -5,7 +5,7 @@ import requests
 
 
 def fetch_poster(movies_id):
-    response=requests.get('https://api.themoviedb.org/3/movie/{}?api_key=API_KEY'.format(movies_id))
+    response=requests.get('https://api.themoviedb.org/3/movie/{}?api_key=48aa1d44678ef3843eec3c5010ae5d9d&language=en-US'.format(movies_id))
     data = response.json()
     return "https://image.tmdb.org/t/p/w185/"+data['poster_path']
 
@@ -32,19 +32,19 @@ selected_movie_name = st.selectbox('hello', movies['title'].values)
 
 if st.button('Recommend'):
     names,posters=recommend(selected_movie_name)
-    col1,col2,col3,col4,col5=st.beta_columns(3)
+    col1,col2,col3,col4,col5=st.columns(5)
     with col1:
-        st.header(names[0])
+        st.caption(names[0])
         st.image(posters[0])
     with col2:
-        st.header(names[1])
+        st.caption(names[1])
         st.image(posters[1])
     with col3:
-        st.header(names[2])
+        st.caption(names[2])
         st.image(posters[2])
     with col4:
-        st.header(names[3])
+        st.caption(names[3])
         st.image(posters[3])
     with col5:
-        st.header(names[4])
+        st.caption(names[4])
         st.image(posters[4])
